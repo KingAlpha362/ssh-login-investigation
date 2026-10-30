@@ -91,4 +91,4 @@ Screenshots derive from original lab evidence, with privacy redactions and expla
 Repeat with a clearly separate Windows client, record the source address before testing, and compare the evidence with this self-originated test.
 
 ## Acknowledgement
-Completed with AI-guided instruction and documentation assistance. Findings were checked against my own lab output. All activity was performed in my personal educational lab.
+All activity was performed in my personal educational lab.
