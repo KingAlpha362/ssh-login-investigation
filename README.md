@@ -8,13 +8,13 @@ Generate controlled SSH authentication activity, correlate Linux logs with Wazuh
 ## 🧰 Environment
 - Windows host with VirtualBox; Kali Linux endpoint with OpenSSH and Wazuh agent
 - Wazuh v4.14.7 appliance; agent name: Kali-Lab
-- Kali: 192.168.0.159; manager configured as 192.168.0.125
+- Kali: KALI_IP; manager configured as WAZUH_IP
 - Existing bridged networking was used. Host-only isolation was discussed but not implemented.
 
 ## 🔎 What I did
 1. Verified SSH and the Wazuh agent were active.
 2. Found that an active agent initially had a pending manager connection. After starting the Wazuh VM, confirmed connected status.
-3. Established a successful SSH login from Windows (source 192.168.0.190).
+3. Established a successful SSH login from Windows (source WINDOWS_IP).
 4. Made another successful login accidentally, then generated three deliberately incorrect password attempts.
 5. Investigated journald records and searched Wazuh Threat Hunting using `rule.groups: sshd`.
 6. Compared source IP, username, source port, process ID, rule details and timestamps.
@@ -24,7 +24,7 @@ Generate controlled SSH authentication activity, correlate Linux logs with Wazuh
 |---|---|
 | Successful logins | Two Wazuh rule 5715 alerts, level 3 |
 | Failed logins | Three Wazuh rule 5760 alerts, level 5 |
-| Failed-login source | 192.168.0.159, the Kali endpoint itself |
+| Failed-login source | KALI_IP, the Kali endpoint itself |
 | Target account | alpha |
 | Connection evidence | Process 17704 and source port 36008 shared across failures |
 | Time window | 30 October 2026, 21:01:08-21:01:24 +02:00 |
@@ -39,6 +39,8 @@ Expected controlled lab activity. The three failures occurred in one SSH connect
 Wazuh attached T1110.001 (Password Guessing) and T1021.004 (SSH), with Credential Access and Lateral Movement tactics. These are rule mappings, not proof of malicious intent or lateral movement. PAM records may describe the same failures and must not be counted as extra attempts.
 
 ## 💻 Commands used
+
+KALI_IP, WINDOWS_IP and WAZUH_IP are documentation labels, not literal command arguments. Replace <LAB_IP> with your own lab address.
 ```bash
 whoami
 ip -br address
@@ -60,24 +62,24 @@ Record which machine the client command runs on. Check the host fingerprint loca
 
 ## 📸 Evidence
 
-Red boxes highlight the relevant commands and evidence. These marked views were rendered from the annotated carousel; [original screenshots](screenshots/) are preserved separately.
+Red boxes highlight relevant commands and evidence. Screenshots are cropped and private addresses are replaced with consistent labels: KALI_IP, WINDOWS_IP and WAZUH_IP. Untouched originals are retained locally.
 
-![01-wazuh-agent-connected](screenshots/annotated/01-wazuh-agent-connected.png)
+![01-wazuh-agent-connected](screenshots/01-wazuh-agent-connected.png)
 
-![02-successeful-ssh-login](screenshots/annotated/02-successeful-ssh-login.png)
+![02-successeful-ssh-login](screenshots/02-successeful-ssh-login.png)
 
-![03-successful-login-linux-log](screenshots/annotated/03-successful-login-linux-log.png)
+![03-successful-login-linux-log](screenshots/03-successful-login-linux-log.png)
 
-![04-controlled-failed-ssh-logins](screenshots/annotated/04-controlled-failed-ssh-logins.png)
+![04-controlled-failed-ssh-logins](screenshots/04-controlled-failed-ssh-logins.png)
 
-![05-wazuh-ssh-events](screenshots/annotated/05-wazuh-ssh-events.png)
+![05-wazuh-ssh-events](screenshots/05-wazuh-ssh-events.png)
 
-![06-failed-login-alert-details](screenshots/annotated/06-failed-login-alert-details.png)
+![06-failed-login-alert-details](screenshots/06-failed-login-alert-details.png)
 
-![07-wazuh-rule-and-mitre-mapping](screenshots/annotated/07-wazuh-rule-and-mitre-mapping.png)
+![07-wazuh-rule-and-mitre-mapping](screenshots/07-wazuh-rule-and-mitre-mapping.png)
 
-![08-ssh-logs-utc](screenshots/annotated/08-ssh-logs-utc.png)
-Screenshots are original lab evidence. Private lab IPs are retained for correlation; no credentials are included.
+![08-ssh-logs-utc](screenshots/08-ssh-logs-utc.png)
+Screenshots derive from original lab evidence, with privacy redactions and explanatory boxes. Lab labels preserve correlation; no credentials are included.
 
 ## 💡 What I learned
 - Service health and manager connectivity are separate checks.
