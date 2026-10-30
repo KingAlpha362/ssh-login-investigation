@@ -60,21 +60,23 @@ Record which machine the client command runs on. Check the host fingerprint loca
 
 ## 📸 Evidence
 
-![01-wazuh-agent-connected](screenshots/01-wazuh-agent-connected.png)
+Red boxes highlight the relevant commands and evidence. These marked views were rendered from the annotated carousel; [original screenshots](screenshots/) are preserved separately.
 
-![02-successeful-ssh-login](screenshots/02-successeful-ssh-login.png)
+![01-wazuh-agent-connected](screenshots/annotated/01-wazuh-agent-connected.png)
 
-![03-successful-login-linux-log](screenshots/03-successful-login-linux-log.png)
+![02-successeful-ssh-login](screenshots/annotated/02-successeful-ssh-login.png)
 
-![04-controlled-failed-ssh-logins](screenshots/04-controlled-failed-ssh-logins.png)
+![03-successful-login-linux-log](screenshots/annotated/03-successful-login-linux-log.png)
 
-![05-wazuh-ssh-events](screenshots/05-wazuh-ssh-events.png)
+![04-controlled-failed-ssh-logins](screenshots/annotated/04-controlled-failed-ssh-logins.png)
 
-![06-failed-login-alert-details](screenshots/06-failed-login-alert-details.png)
+![05-wazuh-ssh-events](screenshots/annotated/05-wazuh-ssh-events.png)
 
-![07-wazuh-rule-and-mitre-mapping](screenshots/07-wazuh-rule-and-mitre-mapping.png)
+![06-failed-login-alert-details](screenshots/annotated/06-failed-login-alert-details.png)
 
-![08-ssh-logs-utc](screenshots/08-ssh-logs-utc.png)
+![07-wazuh-rule-and-mitre-mapping](screenshots/annotated/07-wazuh-rule-and-mitre-mapping.png)
+
+![08-ssh-logs-utc](screenshots/annotated/08-ssh-logs-utc.png)
 Screenshots are original lab evidence. Private lab IPs are retained for correlation; no credentials are included.
 
 ## 💡 What I learned
