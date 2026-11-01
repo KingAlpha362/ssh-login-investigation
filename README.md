@@ -1,6 +1,16 @@
+![SSH Login Investigation — authentication and log correlation](https://raw.githubusercontent.com/KingAlpha362/KingAlpha362/main/assets/covers/ssh.png)
+
 # 🛡️ Investigating Failed SSH Logins with Wazuh
 
 A guided beginner SOC investigation using Kali Linux authentication logs and Wazuh alerts. This is a separate project from my earlier file integrity monitoring lab.
+
+## 📌 At a glance
+
+**Focus:** authentication log analysis · Wazuh alert triage · source attribution · timestamp correlation.
+
+**Result:** three controlled failures were traced to one self-originated SSH connection. The evidence supports a lab test, not a claim of compromise.
+
+[Findings](#-findings) · [Verdict and limitations](#-verdict-and-limitations) · [Evidence](#-evidence)
 
 ## 🎯 Objective
 Generate controlled SSH authentication activity, correlate Linux logs with Wazuh alerts, and explain the outcome using evidence.
@@ -92,3 +102,7 @@ Repeat with a clearly separate Windows client, record the source address before 
 
 ## Acknowledgement
 All activity was performed in my personal educational lab.
+
+---
+
+[← Security portfolio](https://github.com/KingAlpha362/KingAlpha362#-start-with-the-security-work) · [All projects](https://github.com/KingAlpha362/KingAlpha362/blob/main/PORTFOLIO.md)
